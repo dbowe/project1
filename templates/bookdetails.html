@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+Book Details
+{% endblock %}
+
+{% block body %}
+  <div>
+    <table>
+      <tr>
+	<th>ISBN</th>
+	<th>Title</th>
+	<th>Author</th>
+	<th>Publish Year</th>
+	<th>Goodreads Average Rating</th>
+	<th>Goodreads Rating Count</th>
+	</tr>
+        <tr><td>{{ books[0][0] }}</td><td>{{ books[0][1] }}</td>
+	    <td>{{ books[0][2] }}</td><td>{{ books[0][3] }}</td>
+	    <td>{{ gr_avg }}</td><td>{{ gr_cnt }}</td>
+	</tr>
+    </table>
+    <p>
+      <table>
+	<tr>
+	<th>Reviews from this Site</th>
+	<th>Rating</th>
+	</tr>
+	{% for book in books %}
+	<tr>
+	  <td> {{ book[4] }}</td><td>{{ book[5] }}</td>
+	</tr>
+      {% endfor %}
+    </table>
+    <p>
+      <h4>Submit a review for this book</h4>
+      <form action="{{ url_for('submitted') }}", method="post">
+	<table>
+	  <tr><td class="bold" align="right">Rating (0 - 5):</td> 
+	      <td><input type="number" name="rating" min="1" max="5" required></td></tr>
+	  <tr><td class="bold" align="right">Review:</td>
+	      <td><textarea name="review" required align="left" rows="5" cols="100">
+	  </textarea></td></tr>
+	</table>
+	<input type="hidden" name="isbn" value={{ books[0][0] }}>
+	<button>Submit Review</button><input type="reset">
+      </form>
+    <p>
+    <h4>Done? </h4>
+    <form action="{{ url_for('logout') }}", method="post">
+      <button>Log Out</button>
+    </form>
+    <form action="{{ url_for('user_registered', isloggedin=1) }}">
+      <button>New Search</button>
+    </form>
+  </div>
+{% endblock %}

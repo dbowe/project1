@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+ Dot's Great Reviews
+{% endblock %}
+
+{% block body %}
+  <div>
+  <h2> Register for an Account</h2>
+  <p>
+    {{ additional_msg }}
+    <p>
+
+  <form action="{{ url_for('registered', isloggedin='0')  }}", method="post">
+    <table>
+      <tr>
+	<td><b>First Name: </b></td>
+	<td><input type="text" name="first" size="25" required></td>
+      </tr> 
+      <tr>
+	<td><b>Last  Name: </b> </td>
+	<td><input type="text" name="last" size="25" required></td>
+      </tr>
+      <tr>
+	<td><b>User Name: </b> </td>
+	<td><input type="text" name="username" size="25" required></td>
+      </tr>
+      <tr>
+	<td><b>Password:</b></td>
+	<td><input type="password" name="password" size = "25" required></td>
+      </tr> 
+    </table> 
+    <button>Create Account</button><input type="reset">
+    </p>
+    </form>
+    </div>
+{% endblock %}

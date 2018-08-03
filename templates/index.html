@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+   Dot's Great Book Reviews
+{% endblock %}
+
+{% block body %}
+  <div>
+    {{ additional_msg }}
+    <p>
+  <h4>Welcome! Please Log In or <a href="{{ url_for('register') }}">Register for an
+  Account</a></h4> 
+    <form action="{{ url_for('signing_in') }}", method="post">
+      <table>
+	<tr><td class="bold">User Name:</td><td><input type="text" name="username" size="50" required></td></tr>
+	<tr><td class="bold">Password:</td><td> <input type="password"
+	name="password" size="50" required></td></tr>
+	</table>
+    <button>Sign In</button><input type="reset">
+    </form>
+      </div>
+{% endblock %}

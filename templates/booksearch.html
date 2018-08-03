@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+To Search for a book, enter one of the following:
+{% endblock %}
+
+{% block body %}
+<div>
+  <h2>{{ additional_msg }}</h2>
+  <p>
+  <form action="{{ url_for('listbooks') }}", method="post">
+    <table>
+      <tr><td class="bold">ISBN:</td>
+	  <td><input type="number" name="isbn"></td></tr>
+      <tr><td class="bold">Title:</td>
+	  <td><input type="text" name="title" size="100"></td></tr>
+      <tr><td class="bold">Author:</td>
+	  <td><input type="text" name="author" size="50"></td></tr>
+    </table>
+    <p>
+    <button>Submit</button> or <input type="reset"> 
+  </form>
+  <p>
+    <h4>Done? </h4>
+    <form action="{{ url_for('logout') }}", method="post">
+      <button>Log Out</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+Search Results
+{% endblock %}
+
+{% block body %}
+  <div>
+    <h2>{{ additional_msg }}</h2>
+    <table>
+      <tr>
+	<th>Title</th>
+	<th>Author</th>
+      </tr>
+      {% for book in books %}
+        <tr>
+	  <td> <a href="{{ url_for('bookdetails', my_isbn = book[0]) }}">{{ book[1] }}</td><td> {{ book[2] }}</a></td>
+	</tr>
+      {% endfor %}
+    </table>
+  <p>
+    <form action="{{ url_for('logout') }}", method="post">
+      <button>Log Out</button>
+    </form>
+    <form action="{{ url_for('user_registered', isloggedin=1) }}">
+      <button>New Search</button>
+    </form>
+  </div>
+{% endblock %}
